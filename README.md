@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='' title='Yelp' width='' alt='Yelp' />
+<img src='https://raw.githubusercontent.com/dan-choe/Yelp/master/yelp.gif' title='Yelp' width='' alt='Yelp' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
