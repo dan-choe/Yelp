@@ -20,9 +20,14 @@
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="130" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="THw-qm-drn">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <searchBar key="tableHeaderView" contentMode="redraw" id="MvD-9n-tev">
+                                    <rect key="frame" x="0.0" y="64" width="320" height="44"/>
+                                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                    <textInputTraits key="textInputTraits"/>
+                                </searchBar>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="BusinessCell" rowHeight="130" id="oY8-8V-Y3v" customClass="BusinessCell" customModule="Yelp" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="92" width="320" height="130"/>
+                                        <rect key="frame" x="0.0" y="136" width="320" height="130"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="oY8-8V-Y3v" id="2I2-m7-j0w">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="129"/>
@@ -42,7 +47,7 @@
                                                         <constraint firstAttribute="width" constant="85" id="QRH-w5-8By"/>
                                                     </constraints>
                                                 </imageView>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. BusinessName" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-pY-qHD">
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1. BusinessName" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hRZ-pY-qHD">
                                                     <rect key="frame" x="81" y="8" width="129" height="20"/>
                                                     <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="16"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -84,7 +89,6 @@
                                                 <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ixP-iE-xTB" secondAttribute="trailing" constant="8" id="7bk-M5-XqZ"/>
                                                 <constraint firstItem="ixP-iE-xTB" firstAttribute="leading" secondItem="86x-dz-2br" secondAttribute="leading" id="7zZ-pN-NAM"/>
                                                 <constraint firstAttribute="bottom" relation="greaterThanOrEqual" secondItem="ixP-iE-xTB" secondAttribute="bottom" constant="12" id="89y-8j-RX6"/>
-                                                <constraint firstItem="IDI-sI-JDp" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="hRZ-pY-qHD" secondAttribute="trailing" constant="5" id="DDl-Z0-594"/>
                                                 <constraint firstItem="ixP-iE-xTB" firstAttribute="top" secondItem="86x-dz-2br" secondAttribute="bottom" constant="2" id="F8M-mY-P4J"/>
                                                 <constraint firstItem="86x-dz-2br" firstAttribute="leading" secondItem="WNt-PO-Mc1" secondAttribute="trailing" constant="11" id="KwG-uL-O4V"/>
                                                 <constraint firstItem="5tf-Ek-ZHL" firstAttribute="top" secondItem="hRZ-pY-qHD" secondAttribute="bottom" constant="1" id="MzB-B7-oda"/>
@@ -116,19 +120,25 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <gestureRecognizers/>
                         <constraints>
                             <constraint firstAttribute="trailing" secondItem="THw-qm-drn" secondAttribute="trailing" id="FHW-HZ-bKh"/>
                             <constraint firstItem="THw-qm-drn" firstAttribute="leading" secondItem="XhR-oz-92f" secondAttribute="leading" id="MHd-T5-1Mh"/>
                             <constraint firstItem="THw-qm-drn" firstAttribute="top" secondItem="XhR-oz-92f" secondAttribute="top" id="RLT-JQ-U9r"/>
                             <constraint firstItem="VBY-gq-v8E" firstAttribute="top" secondItem="THw-qm-drn" secondAttribute="bottom" id="ja8-aX-5xX"/>
                         </constraints>
+                        <connections>
+                            <outletCollection property="gestureRecognizers" destination="6aW-Tn-Sd1" appends="YES" id="6k7-TC-4a1"/>
+                        </connections>
                     </view>
                     <navigationItem key="navigationItem" title="Yelp" id="gw1-gO-h8v"/>
                     <connections>
+                        <outlet property="searchBar" destination="MvD-9n-tev" id="obU-du-T2O"/>
                         <outlet property="tableView" destination="THw-qm-drn" id="vah-7q-M9x"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Fgb-4b-F1b" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="6aW-Tn-Sd1"/>
             </objects>
             <point key="canvasLocation" x="1485" y="338"/>
         </scene>
