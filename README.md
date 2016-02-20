@@ -22,7 +22,7 @@ The following **optional** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
-<img src='https://raw.githubusercontent.com/dan-choe/Flicks/master/flicks4.gif' title='Tip-Calculator' width='' alt='Tip-Calculator' />
+<img src='' title='Yelp' width='' alt='Yelp' />
 
 GIF created with [LiceCap](http://www.cockos.com/licecap/).
 
