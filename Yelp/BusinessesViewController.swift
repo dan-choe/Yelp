@@ -18,7 +18,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     var businesses: [Business]!
     var filteredData: [Business]!
-    
+    //var isMoreDataLoading = false
     
 
     override func viewDidLoad() {
@@ -27,17 +27,19 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         tableView.dataSource = self
         tableView.delegate = self
         searchBar.delegate = self
-
-        
         //searchBar = UISearchBar()
-        
-
         tableView.estimatedRowHeight = 100
         tableView.rowHeight = UITableViewAutomaticDimension
+        //searchController.searchBar.sizeToFit()
         navigationItem.titleView = searchBar
+        //searchController.hidesNavigationBarDuringPresentation = false
         
+        var tapGestureRecognizer = UITapGestureRecognizer(target: self, action: "onCustomTap:")
+        tapGestureRecognizer.numberOfTapsRequired = 2
         
-        
+        tableView.userInteractionEnabled = true
+        tableView.addGestureRecognizer(tapGestureRecognizer)
+
         
         // Sets this view controller as presenting view controller for the search interface
         definesPresentationContext = true
@@ -46,13 +48,14 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
             self.businesses = businesses
             self.filteredData = businesses
             self.tableView.reloadData()
-        
+        /*
             for business in businesses {
                 print(business.name!)
                 print(business.address!)
-            }
+            }*/
         })
 
+        
         
         
 
@@ -68,6 +71,8 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         }
 */
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -128,7 +133,7 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
     
     
     func searchBarTextDidBeginEditing(searchBar: UISearchBar) {
-        self.searchBar.showsCancelButton = true
+        self.searchBar.showsCancelButton = false
         self.searchBar.endEditing(true)
         self.searchBar.resignFirstResponder()
     }
@@ -148,7 +153,49 @@ class BusinessesViewController: UIViewController, UITableViewDataSource, UITable
         self.searchBar.resignFirstResponder()
     }
     
-  
+    func onCustomTap(sender: UITapGestureRecognizer) {
+        var point = sender.locationInView(tableView)
+        searchBar.text = ""
+        self.searchBar.endEditing(true)
+        self.searchBar.resignFirstResponder()
+        
+        // User tapped at the point above. Do something with that if you want.
+    }
+    /*
+    func loadMoreData() {
+   
+        self.isMoreDataLoading = false
+        
+        Business.searchWithTerm("Food", completion: { (businesses: [Business]!, error: NSError!) -> Void in
+            self.businesses = businesses
+            self.filteredData = businesses
+            self.tableView.reloadData()
+            /*
+            for business in businesses {
+                print(business.name!)
+                print(business.address!)
+            }*/
+        })
+
+    }
+    
+    func scrollViewDidScroll(scrollView: UIScrollView) {
+        
+        if (!isMoreDataLoading) {
+            // Calculate the position of one screen length before the bottom of the results
+            let scrollViewContentHeight = tableView.contentSize.height
+            let scrollOffsetThreshold = scrollViewContentHeight - tableView.bounds.size.height
+            
+            // When the user has scrolled past the threshold, start requesting
+            if(scrollView.contentOffset.y > scrollOffsetThreshold && tableView.dragging) {
+                isMoreDataLoading = true
+                
+                loadMoreData()
+            }
+        }
+    }
+
+    */
     
     /*
     // MARK: - Navigation
